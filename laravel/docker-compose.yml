@@ -1,0 +1,17 @@
+version: "3.5"
+services:
+    web:
+        image: chipaau/php:7.3-apache
+        container_name: hackmcq
+        stdin_open: true
+        restart: unless-stopped
+        volumes:
+            - ./:/var/www/html
+            - ./docker/apache.conf:/etc/apache2/apache2.conf
+            - ./docker/apache-app.conf:/etc/apache2/sites-enabled/000-default.conf:ro
+            - ./docker/scripts/.bash_aliases:/home/user/.bash_aliases:ro
+        working_dir: /var/www/html
+        ports:
+            - "80:80"
+networks:
+    default:

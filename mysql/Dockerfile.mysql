@@ -1,0 +1,14 @@
+FROM mysql:8
+
+ENV MYSQL_ROOT_PASSWORD root
+ENV MYSQL_USER testMysqlUser
+ENV MYSQL_PASSWORD testMysqlPassword
+ENV MYSQL_DATABASE shadowDatabase
+
+COPY ./schemapath/privileges.sql /docker-entrypoint-initdb.d/
+
+# MySQL	Database
+# - CREATE, 
+# - ALTER, 
+# - DROP, 
+# - REFERENCES ON *.* privileges
